@@ -1,9 +1,21 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <nav class="nav-app">
+    <img
+      src="./assets/logo-dacxi.png"
+      alt="DACXI Crypto Currency"
+      class="nav-logo"
+    />
+    <!-- <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link> -->
   </nav>
-  <router-view />
+
+  <div class="container-app">
+    <router-view />
+  </div>
+
+  <div class="footer-app">
+    <p>Powered by CoinGecko</p>
+  </div>
 </template>
 
 <style lang="scss">
@@ -15,16 +27,35 @@
   color: #2c3e50;
 }
 
-nav {
-  padding: 30px;
+body {
+  margin: 0%;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.nav-app {
+  display: flex;
+  min-height: 10vh;
+  min-width: 100vw;
+  transition: all 0.3s ease-in;
+  background: linear-gradient(
+    225deg,
+    rgba(8, 8, 164, 0.6) 100%,
+    rgba(0, 0, 65, 0.6) 0%
+  );
+  margin-bottom: 3rem;
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  .nav-logo {
+    object-fit: contain;
+    padding: 1rem 0 1rem 1.2rem;
   }
+}
+
+.footer-app {
+  font-size: 0.6rem;
+  color: gray;
+  margin: 1rem 0 1rem 0;
+}
+
+.container-app {
+  min-height: 75vh;
 }
 </style>
