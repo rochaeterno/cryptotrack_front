@@ -61,10 +61,13 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { ChevronDownIcon } from "@heroicons/vue/20/solid";
+import { mapState } from "vuex";
 
 export default defineComponent({
   name: "PriceTable",
   components: { ChevronDownIcon },
+
+  computed: mapState(["coins_data"]),
 });
 </script>
 
