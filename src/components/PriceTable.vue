@@ -30,21 +30,36 @@
                   <!-- Table Body -->
                   <tr
                     class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 text-left"
+                    v-for="coin in coins_data"
+                    :key="coin.id"
                   >
                     <td
                       class="whitespace-nowrap text-sm font-medium text-gray-900 text-left pl-4"
                     >
-                      Dacxi (<b>DACXI</b>)
+                      {{ coin.data.name }} (<b>{{
+                        coin.data.symbol.toUpperCase()
+                      }}</b
+                      >)
                     </td>
                     <td
                       class="text-sm text-gray-900 font-light pl-2 py-4 whitespace-nowrap text-left"
                     >
-                      R$0.00222252
+                      R${{
+                        parseFloat(coin.price.brl).toLocaleString("pt-br", {
+                          style: "decimal",
+                          minimumFractionDigits: 2,
+                        })
+                      }}
                     </td>
                     <td
                       class="text-sm text-gray-900 font-light pl-2 py-4 whitespace-nowrap text-left pl-4"
                     >
-                      $0.00222252
+                      ${{
+                        parseFloat(coin.price.usd).toLocaleString("pt-br", {
+                          style: "decimal",
+                          minimumFractionDigits: 2,
+                        })
+                      }}
                     </td>
                     <td class="pr-4"><ChevronDownIcon /></td>
                   </tr>
@@ -71,12 +86,4 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss">
-.table-row:nth-child(even) {
-  background-color: #f8f8f8;
-}
-
-.table-row:nth-child(odd) {
-  background-color: white;
-}
-</style>
+<style scoped lang="scss"></style>
