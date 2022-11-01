@@ -5,11 +5,9 @@
       alt="DACXI Crypto Currency"
       class="nav-logo"
     />
-    <!-- <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> -->
   </nav>
 
-  <div class="container-app">
+  <div class="container container-app px-4">
     <router-view />
   </div>
 
@@ -33,8 +31,6 @@ body {
 
 .nav-app {
   display: flex;
-  min-height: 10vh;
-  min-width: 100vw;
   transition: all 0.3s ease-in;
   background: linear-gradient(
     225deg,
@@ -56,6 +52,7 @@ body {
 }
 
 .container-app {
-  min-height: 75vh;
+  min-height: 72vh;
+  max-width: 100vw;
 }
 </style>

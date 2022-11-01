@@ -1,53 +1,70 @@
 <template>
-  <main>
-    <div class="table-card">
-      <table class="price-table">
-        <!-- Table Header -->
-        <tr class="table-header">
-          <th class="collumn-title"></th>
-          <th class="collumn-title">price (BRL)</th>
-          <th class="collumn-title">price (USD)</th>
-          <th class="collumn-title"></th>
-        </tr>
-
-        <!-- Table Body -->
-        <tr class="table-row">
-          <td>Dacxi (DACXI)</td>
-          <td>R$0.00222252</td>
-          <td>$0.00222252</td>
-          <td></td>
-        </tr>
-
-        <tr class="table-row">
-          <td>Ethereum (ETH)</td>
-          <td>R$0.00222252</td>
-          <td>$0.00222252</td>
-          <td></td>
-        </tr>
-
-        <tr class="table-row">
-          <td>Cosmos Hub (ATOM)</td>
-          <td>R$0.00222252</td>
-          <td>$0.00222252</td>
-          <td></td>
-        </tr>
-
-        <tr class="table-row">
-          <td>Terra (LUNA)</td>
-          <td>R$0.00222252</td>
-          <td>$0.00222252</td>
-          <td></td>
-        </tr>
-      </table>
+  <main class="container">
+    <div class="flex flex-col">
+      <div class="overflow-x-auto">
+        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="overflow-hidden flex flex-row place-content-center">
+            <div
+              class="border-4 border-indigo-500/75 rounded-lg sm:w-full lg:w-3/5"
+            >
+              <table class="min-w-full table-auto">
+                <thead class="bg-indigo-300">
+                  <tr class="pl-4">
+                    <th scope="col"></th>
+                    <th
+                      scope="col"
+                      class="text-sm font-small text-gray-900 py-4 text-left"
+                    >
+                      PRICE (BRL)
+                    </th>
+                    <th
+                      scope="col"
+                      class="text-sm font-small text-gray-900 py-4 text-left"
+                    >
+                      PRICE (USD)
+                    </th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Table Body -->
+                  <tr
+                    class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 text-left"
+                  >
+                    <td
+                      class="whitespace-nowrap text-sm font-medium text-gray-900 text-left pl-4"
+                    >
+                      Dacxi (<b>DACXI</b>)
+                    </td>
+                    <td
+                      class="text-sm text-gray-900 font-light pl-2 py-4 whitespace-nowrap text-left"
+                    >
+                      R$0.00222252
+                    </td>
+                    <td
+                      class="text-sm text-gray-900 font-light pl-2 py-4 whitespace-nowrap text-left pl-4"
+                    >
+                      $0.00222252
+                    </td>
+                    <td class="pr-4"><ChevronDownIcon /></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 
 export default defineComponent({
   name: "PriceTable",
+  components: { ChevronDownIcon },
 });
 </script>
 
