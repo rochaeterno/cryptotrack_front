@@ -48,6 +48,7 @@
                         parseFloat(coin.price.brl).toLocaleString("pt-br", {
                           style: "decimal",
                           minimumFractionDigits: 2,
+                          maximumFractionDigits: 6,
                         })
                       }}
                     </td>
@@ -58,6 +59,7 @@
                         parseFloat(coin.price.usd).toLocaleString("pt-br", {
                           style: "decimal",
                           minimumFractionDigits: 2,
+                          maximumFractionDigits: 6,
                         })
                       }}
                     </td>

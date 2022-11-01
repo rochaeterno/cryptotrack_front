@@ -20,6 +20,9 @@ export default defineComponent({
 
     updateCoinsValues() {
       this.catchCoinValue();
+      setTimeout(() => {
+        this.updateCoinsValues();
+      }, 60000);
     },
   },
 });

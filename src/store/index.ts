@@ -80,7 +80,7 @@ export default createStore({
   actions: {
     async catchCoinValue({ commit }) {
       const api_url =
-        "https://api.coingecko.com/api/v3/simple/price?ids=dacxi%2Cethereum%2Ccosmos%2Cterra-luna-2&vs_currencies=usd%2Cbrl";
+        "https://api.coingecko.com/api/v3/simple/price?ids=dacxi%2Cethereum%2Ccosmos%2Cterra-luna-2&vs_currencies=usd%2Cbrl&precision=6";
 
       const data = await fetch(api_url).then((response) => {
         return response.json();
