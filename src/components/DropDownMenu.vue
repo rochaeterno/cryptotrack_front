@@ -11,7 +11,7 @@
 
     <div v-show="visible" class="flex flex-row-reverse lg:flex-row">
       <div
-        class="flex flex-col bg-white w-2/5 lg:w-1/5 border-4 border-indigo-300 rounded px-1 pb-2 absolute -mt-2 mr-4 lg:mr-0"
+        class="flex flex-col bg-white w-3/5 md:w-2/5 lg:w-1/5 border-4 border-indigo-300 rounded px-1 pb-2 absolute -mt-2 mr-4 lg:mr-0"
       >
         <FilterFormModal :coin_id="coin_id">
           <div

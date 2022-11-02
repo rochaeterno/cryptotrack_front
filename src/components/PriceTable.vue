@@ -1,20 +1,24 @@
 <template>
   <main class="container">
     <div class="flex flex-col">
-      <div class="overflow-x-auto">
-        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="overflow-x-hidden">
+        <div class="py-2 inline-block w-full sm:px-6 lg:px-8">
           <div class="overflow-hidden flex flex-row place-content-center">
             <div
-              class="border-4 border-indigo-500/75 rounded-lg sm:w-full lg:w-3/5"
+              class="border-4 border-indigo-500/75 rounded-lg w-full lg:w-3/5 overflow-hidden"
             >
               <table class="min-w-full table-auto">
                 <thead class="bg-indigo-300 text-gray-6700">
                   <tr class="pl-4">
                     <th scope="col"></th>
                     <th scope="col" class="text-sm font-small py-4 text-left">
-                      PRICE (BRL)
+                      <p class="hidden md:inline">PRICE(BRL)</p>
+                      <p class="inline md:hidden">PRICE</p>
                     </th>
-                    <th scope="col" class="text-sm font-small py-4 text-left">
+                    <th
+                      scope="col"
+                      class="text-sm font-small py-4 text-left hidden md:table-cell"
+                    >
                       PRICE (USD)
                     </th>
                     <th scope="col"></th>
@@ -44,16 +48,38 @@
                     <td
                       class="text-sm text-gray-900 font-light pl-2 py-4 whitespace-nowrap text-left"
                     >
-                      R${{
-                        parseFloat(coin.price.brl).toLocaleString("pt-br", {
-                          style: "decimal",
-                          minimumFractionDigits: 2,
-                          maximumFractionDigits: 6,
-                        })
-                      }}
+                      <div class="hidden md:inline">
+                        R${{
+                          parseFloat(coin.price.brl).toLocaleString("pt-br", {
+                            style: "decimal",
+                            minimumFractionDigits: 2,
+                            maximumFractionDigits: 6,
+                          })
+                        }}
+                      </div>
+                      <div class="flex md:hidden flex-col">
+                        <div>
+                          <b class="font-bold">BRL:</b> R${{
+                            parseFloat(coin.price.brl).toLocaleString("pt-br", {
+                              style: "decimal",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 6,
+                            })
+                          }}
+                        </div>
+                        <div>
+                          <b class="font-bold">USD:</b> ${{
+                            parseFloat(coin.price.usd).toLocaleString("pt-br", {
+                              style: "decimal",
+                              minimumFractionDigits: 2,
+                              maximumFractionDigits: 6,
+                            })
+                          }}
+                        </div>
+                      </div>
                     </td>
                     <td
-                      class="text-sm text-gray-900 font-light pl-2 py-4 whitespace-nowrap text-left pl-4"
+                      class="text-sm text-gray-900 font-light pl-2 py-4 whitespace-nowrap text-left pl-4 hidden md:table-cell"
                     >
                       ${{
                         parseFloat(coin.price.usd).toLocaleString("pt-br", {
