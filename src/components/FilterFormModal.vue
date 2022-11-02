@@ -8,7 +8,7 @@
       class="flex flex-col place-self-center bg-white w-4/5 md:w-1/2 lg:w-2/6 min-h-min rounded-lg"
     >
       <div class="w-full flex flex-row place-content-end">
-        <button class="close-button" @click="ToogleVisibility()">
+        <button class="close-button" @click="closeModal()">
           <div
             class="rounded-full overflow-hidden w-7 mx-2 mt-2 self-center bg-indigo-300 hover:bg-indigo-500"
           >
@@ -55,10 +55,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, inject } from "vue";
 import { XMarkIcon } from "@heroicons/vue/20/solid";
 import { mapActions } from "vuex";
 import { maska } from "maska";
+import Swal from "sweetalert2";
 
 export default defineComponent({
   name: "FilterFormModal",
@@ -78,14 +79,30 @@ export default defineComponent({
     ...mapActions(["catchCoinByDate"]),
 
     ToogleVisibility() {
+      this.date = "";
       this.visible = !this.visible;
     },
 
-    filterCoin() {
-      const filter = { id: this.coin_id, date: this.date };
-      this.catchCoinByDate(filter);
-      this.ToogleVisibility();
+    closeModal() {
+      this.date = "";
+      this.visible = false;
       this.$emit("closeDropDown");
+    },
+
+    async filterCoin() {
+      const filter = { id: this.coin_id, date: this.date };
+      await this.catchCoinByDate(filter).then((error) => {
+        if (error != undefined) {
+          Swal.fire({
+            title: "Date not find",
+            text: "Sorry, we could not find a price for this coin in the selected date. Please try anothe date.",
+            icon: "warning",
+          });
+        }
+        this.ToogleVisibility();
+
+        this.$emit("closeDropDown");
+      });
     },
   },
 });

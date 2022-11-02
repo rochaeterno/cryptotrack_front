@@ -116,15 +116,19 @@ export default createStore({
     },
 
     async catchCoinByDate({ commit }, filter) {
-      const api_url = `https://api.coingecko.com/api/v3/coins/${filter.id}/history?date=${filter.date}&localization=false`;
-      const data = await fetch(api_url).then((response) => {
-        return response.json();
-      });
+      try {
+        const api_url = `https://api.coingecko.com/api/v3/coins/${filter.id}/history?date=${filter.date}&localization=false`;
+        const data = await fetch(api_url).then((response) => {
+          return response.json();
+        });
 
-      data.filter = { date: filter.date };
-      commit("filterCoin", {
-        payload: data,
-      });
+        data.filter = { date: filter.date };
+        commit("filterCoin", {
+          payload: data,
+        });
+      } catch (error) {
+        return error;
+      }
     },
   },
   modules: {},
