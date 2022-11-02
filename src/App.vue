@@ -1,5 +1,5 @@
 <template>
-  <nav class="nav-app">
+  <nav class="nav-app w-full">
     <img
       src="./assets/logo-dacxi.png"
       alt="DACXI Crypto Currency"
