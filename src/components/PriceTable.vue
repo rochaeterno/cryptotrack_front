@@ -30,6 +30,12 @@
                     <td
                       class="whitespace-nowrap text-sm font-medium text-gray-900 text-left pl-4"
                     >
+                      <p
+                        v-if="coin.filter.date"
+                        class="absolute text-red-500 text-xs italic -mt-4"
+                      >
+                        Filtered to day {{ coin.filter?.date }}.
+                      </p>
                       {{ coin.data.name }} (<b>{{
                         coin.data.symbol.toUpperCase()
                       }}</b
@@ -58,9 +64,6 @@
                       }}
                     </td>
                     <td class="pr-4">
-                      <p class="absolute text-red-500 text-xs italic">
-                        Please fill this field with a valid value.
-                      </p>
                       <DropDownMenu :coin_id="coin.id" />
                     </td>
                   </tr>
