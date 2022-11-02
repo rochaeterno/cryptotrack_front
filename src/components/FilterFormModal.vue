@@ -71,6 +71,9 @@ export default defineComponent({
       date: "",
     };
   },
+  emits: {
+    closeDropDown: null,
+  },
   methods: {
     ...mapActions(["catchCoinByDate"]),
 
@@ -82,6 +85,7 @@ export default defineComponent({
       const filter = { id: this.coin_id, date: this.date };
       this.catchCoinByDate(filter);
       this.ToogleVisibility();
+      this.$emit("closeDropDown");
     },
   },
 });
