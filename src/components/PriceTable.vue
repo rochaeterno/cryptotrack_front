@@ -8,19 +8,13 @@
               class="border-4 border-indigo-500/75 rounded-lg sm:w-full lg:w-3/5"
             >
               <table class="min-w-full table-auto">
-                <thead class="bg-indigo-300">
+                <thead class="bg-indigo-300 text-gray-6700">
                   <tr class="pl-4">
                     <th scope="col"></th>
-                    <th
-                      scope="col"
-                      class="text-sm font-small text-gray-900 py-4 text-left"
-                    >
+                    <th scope="col" class="text-sm font-small py-4 text-left">
                       PRICE (BRL)
                     </th>
-                    <th
-                      scope="col"
-                      class="text-sm font-small text-gray-900 py-4 text-left"
-                    >
+                    <th scope="col" class="text-sm font-small py-4 text-left">
                       PRICE (USD)
                     </th>
                     <th scope="col"></th>
