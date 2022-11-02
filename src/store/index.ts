@@ -93,6 +93,13 @@ export default createStore({
         }
       });
     },
+    removeFilter(state, id) {
+      state.coins_data.map((coin) => {
+        if (coin.id == id) {
+          coin.filter = {};
+        }
+      });
+    },
   },
   actions: {
     async catchCoinValue({ commit }) {
