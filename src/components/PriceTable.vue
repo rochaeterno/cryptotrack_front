@@ -63,7 +63,9 @@
                         })
                       }}
                     </td>
-                    <td class="pr-4"><ChevronDownIcon /></td>
+                    <td class="pr-4">
+                      <DropDownMenu :coin_id="coin.id" />
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -77,14 +79,15 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 import { mapState } from "vuex";
+import DropDownMenu from "@/components/DropDownMenu.vue";
 
 export default defineComponent({
   name: "PriceTable",
-  components: { ChevronDownIcon },
-
   computed: mapState(["coins_data"]),
+  components: {
+    DropDownMenu,
+  },
 });
 </script>
 
