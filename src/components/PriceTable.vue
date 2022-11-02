@@ -58,6 +58,9 @@
                       }}
                     </td>
                     <td class="pr-4">
+                      <p class="absolute text-red-500 text-xs italic">
+                        Please fill this field with a valid value.
+                      </p>
                       <DropDownMenu :coin_id="coin.id" />
                     </td>
                   </tr>

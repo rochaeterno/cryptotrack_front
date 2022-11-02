@@ -27,29 +27,13 @@
             </label>
             <input
               class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-              id="grid-first-name"
+              v-model="date"
+              id="date-field"
               type="text"
-              placeholder="DD/MM/YYYY"
+              placeholder="DD-MM-YYYY"
             />
             <p class="text-red-500 text-xs italic invisible">
-              Please fill this field with a valida value.
-            </p>
-          </div>
-          <div class="w-full px-3">
-            <label
-              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              for="grid-last-name"
-            >
-              Hora
-            </label>
-            <input
-              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-              id="grid-last-name"
-              type="text"
-              placeholder="HH:MM"
-            />
-            <p class="text-red-500 text-xs italic invisible">
-              Please fill this field with a valida value.
+              Please fill this field with a valid value.
             </p>
           </div>
         </div>
@@ -59,6 +43,7 @@
           <a
             class="inline-block align-baseline font-bold text-sm text-indigo-500 hover:text-indigo-800"
             href="#"
+            @click="filterCoin()"
           >
             Verify Price
           </a>
@@ -71,6 +56,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { XMarkIcon } from "@heroicons/vue/20/solid";
+import { mapActions } from "vuex";
 
 export default defineComponent({
   name: "FilterFormModal",
@@ -79,11 +65,20 @@ export default defineComponent({
   data() {
     return {
       visible: false,
+      date: "",
     };
   },
   methods: {
+    ...mapActions(["catchCoinByDate"]),
+
     ToogleVisibility() {
       this.visible = !this.visible;
+    },
+
+    filterCoin() {
+      const filter = { id: this.coin_id, date: this.date };
+      this.catchCoinByDate(filter);
+      this.ToogleVisibility();
     },
   },
 });

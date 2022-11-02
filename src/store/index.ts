@@ -18,6 +18,7 @@ export default createStore({
           },
         },
         price: {},
+        filter: {},
       },
       {
         id: "ethereum",
@@ -34,6 +35,7 @@ export default createStore({
           },
         },
         price: {},
+        filter: {},
       },
       {
         id: "cosmos",
@@ -50,6 +52,7 @@ export default createStore({
           },
         },
         price: {},
+        filter: {},
       },
       {
         id: "terra-luna-2",
@@ -66,6 +69,7 @@ export default createStore({
           },
         },
         price: {},
+        filter: {},
       },
     ],
   },
@@ -73,7 +77,20 @@ export default createStore({
   mutations: {
     updateData(state, data) {
       state.coins_data.map((coin) => {
-        coin.price = data.payload?.[coin.id];
+        if (Object.values(coin.filter).length == 0) {
+          coin.price = data.payload?.[coin.id];
+        }
+      });
+    },
+    filterCoin(state, data) {
+      state.coins_data.map((coin) => {
+        if (coin.id == data.payload.id) {
+          coin.price = {
+            brl: data.payload.market_data.current_price.brl,
+            usd: data.payload.market_data.current_price.usd,
+          };
+          coin.filter = data.payload.filter;
+        }
       });
     },
   },
@@ -87,6 +104,18 @@ export default createStore({
       });
 
       commit("updateData", {
+        payload: data,
+      });
+    },
+
+    async catchCoinByDate({ commit }, filter) {
+      const api_url = `https://api.coingecko.com/api/v3/coins/${filter.id}/history?date=${filter.date}&localization=false`;
+      const data = await fetch(api_url).then((response) => {
+        return response.json();
+      });
+
+      data.filter = { date: filter.date };
+      commit("filterCoin", {
         payload: data,
       });
     },
