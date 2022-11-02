@@ -2,18 +2,22 @@
   <main>
     <div>
       <button
-        @click="toogleMenu()"
+        @click="openMenu()"
         class="flex hover:bg-gray-400 rounded-full overflow-hidden w-10 lg:inline-flex"
       >
         <ChevronDownIcon />
       </button>
     </div>
 
-    <div v-show="visible" class="flex flex-row-reverse lg:flex-row">
+    <div
+      v-show="visible"
+      v-on-click-outside="() => closeMenu()"
+      class="flex flex-row-reverse lg:flex-row"
+    >
       <div
         class="flex flex-col bg-white w-3/5 md:w-2/5 lg:w-1/5 border-4 border-indigo-300 rounded px-1 pb-2 absolute -mt-2 mr-4 lg:mr-0"
       >
-        <FilterFormModal :coin_id="coin_id" @closeDropDown="toogleMenu()">
+        <FilterFormModal :coin_id="coin_id" @closeDropDown="closeMenu()">
           <div
             class="flex mt-1 py-2 rounded-lg w-full place-content-start bg-blue-50 stroke-gray-400 text-gray-400 hover:bg-blue-100 hover:text-gray-600 hover:stroke-gray-600"
           >
@@ -47,6 +51,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import onClickOutside from "@/directives/OnClickOutside.js";
 import {
   ChevronDownIcon,
   CalendarDaysIcon,
@@ -58,10 +63,14 @@ import { mapMutations, mapActions } from "vuex";
 export default defineComponent({
   name: "DropDownMenu",
   props: { coin_id: String },
+  directives: {
+    onClickOutside,
+  },
   components: { ChevronDownIcon, CalendarDaysIcon, XMarkIcon, FilterFormModal },
   data() {
     return {
       visible: false,
+      open: false,
     };
   },
   methods: {
@@ -71,10 +80,21 @@ export default defineComponent({
     toogleMenu() {
       this.visible = !this.visible;
     },
+    openMenu() {
+      this.visible = true;
+    },
+    closeMenu() {
+      if (this.visible && !this.open) {
+        this.open = true;
+      } else if (this.visible && this.open) {
+        this.visible = false;
+        this.open = false;
+      }
+    },
     clearFilters() {
       this.removeFilter(this.coin_id);
       this.catchCoinValue();
-      this.toogleMenu();
+      this.closeMenu();
     },
   },
 });
