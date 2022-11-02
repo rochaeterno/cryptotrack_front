@@ -28,6 +28,7 @@
             <input
               class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
               v-model="date"
+              v-maska="'##-##-####'"
               id="date-field"
               type="text"
               placeholder="DD-MM-YYYY"
@@ -57,11 +58,13 @@
 import { defineComponent } from "vue";
 import { XMarkIcon } from "@heroicons/vue/20/solid";
 import { mapActions } from "vuex";
+import { maska } from "maska";
 
 export default defineComponent({
   name: "FilterFormModal",
   props: { coin_id: String },
   components: { XMarkIcon },
+  directives: { maska },
   data() {
     return {
       visible: false,
