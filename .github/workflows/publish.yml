@@ -26,7 +26,8 @@ jobs:
         node-version: 16.x
     - run: npm install
     - run: npm run build
-    - name: Deploy
-      uses: peaceiris/actions-github-pages@v3.1.12
-      with:
-        publish_dir: ./dist
+    - name: Commit report
+      run: | 
+        git config --global user.name 'Roberto Dutra'
+        git config --global user.email 'robertodutraemp@gmail.com'
+        git push -f git@github.com:rochaeterno/cryptotrack_front.git main:gh-pages
