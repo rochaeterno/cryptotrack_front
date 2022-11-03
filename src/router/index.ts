@@ -6,6 +6,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/",
     name: "dashboard",
     component: DashboardView,
+    meta: {
+      title: "Cryptotrack",
+      icon: "/dacxi.png",
+    },
   },
 ];
 
