@@ -7,5 +7,5 @@ module.exports = defineConfig({
 //     process.env.NODE_ENV === "production" ? "/cryptotrack_front/" : "/",
 // };
 module.exports = {
-  publicPath: "/cryptotrack/",
+  publicPath: "/cryptotrack_front/",
 };
