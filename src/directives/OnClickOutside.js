@@ -1,5 +1,5 @@
 export const onClickOutSide = {
-  mounted: function (el, binding, vnode) {
+  mounted: function (el, binding) {
     el.clickOutsideEvent = function (event) {
       if (!(el == event.target || el.contains(event.target))) {
         binding.value(event, el);

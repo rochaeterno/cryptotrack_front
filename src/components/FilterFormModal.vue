@@ -55,7 +55,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, inject } from "vue";
+import { defineComponent } from "vue";
 import { XMarkIcon } from "@heroicons/vue/20/solid";
 import { mapActions } from "vuex";
 import { maska } from "maska";
