@@ -4,6 +4,23 @@ export default createStore({
   state: {
     coins_data: [
       {
+        id: "bitcoin",
+        data: {
+          name: "Bitcoin",
+          symbol: "btc",
+          image: {
+            thumb:
+              "https://assets.coingecko.com/coins/images/1/thumb/bitcoin.png?1547033579",
+            small:
+              "https://assets.coingecko.com/coins/images/1/small/bitcoin.png?1547033579",
+            large:
+              "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579",
+          },
+        },
+        price: {},
+        filter: {},
+      },
+      {
         id: "dacxi",
         data: {
           name: "Dacxi",
@@ -102,9 +119,15 @@ export default createStore({
     },
   },
   actions: {
-    async catchCoinValue({ commit }) {
-      const api_url =
-        "https://api.coingecko.com/api/v3/simple/price?ids=dacxi%2Cethereum%2Ccosmos%2Cterra-luna-2&vs_currencies=usd%2Cbrl&precision=6";
+    async catchCoinValue({ commit, state }) {
+      let suported_coins = String(state.coins_data[0].id);
+      for (let index = 1; index < state.coins_data.length; index++) {
+        if (state.coins_data.length > 1 && index == 1) {
+          suported_coins += "%2C";
+        }
+        suported_coins += state.coins_data[index].id + "%2C";
+      }
+      const api_url = `https://api.coingecko.com/api/v3/simple/price?ids=${suported_coins}&vs_currencies=usd%2Cbrl&precision=6`;
 
       const data = await fetch(api_url).then((response) => {
         return response.json();
