@@ -12,7 +12,6 @@
     },
     "dependencies": {
         "@heroicons/vue": "^2.0.12",
-        "@mahdikhashan/vue3-click-outside": "^0.1.2",
         "core-js": "^3.8.3",
         "maska": "^1.5.0",
         "uninstall": "^0.0.0",
