@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="flex place-content-center">
     <PriceTable />
   </main>
 </template>
