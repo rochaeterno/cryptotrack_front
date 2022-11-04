@@ -29,7 +29,7 @@ To run your test in your application directory execute the following commands:
   npm install
 
   # To actually start your server
-  npm run server
+  npm run serve
 ```
 
 By default your npm package wold open your test server in port 8080 if you dont change this port you can access your server in the andress http://localhost:8080/
